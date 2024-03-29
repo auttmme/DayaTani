@@ -1,4 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
+import "@fontsource-variable/urbanist";
 
 const config = {
 	initialColorMode: "light",
@@ -10,10 +11,12 @@ const config = {
 			},
 		},
 	},
+	fonts: {
+		heading: `'Urbanist', sans-serif`,
+		body: `'Urbanist', sans-serif`,
+	},
 };
 
 const customTheme = extendTheme(config);
-
-console.log(customTheme.styles.global.body);
 
 export default customTheme;
