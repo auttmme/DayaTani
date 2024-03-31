@@ -1,7 +1,14 @@
 import { Flex, Text, Button } from "@chakra-ui/react";
 import FarmerList from "../components/FarmerList";
+import { useNavigate } from "react-router-dom";
 
 function FarmListPage() {
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate("/add-farmer");
+	};
+
 	return (
 		<Flex flexDirection="column" gap={3}>
 			<Flex justifyContent="space-between" alignItems="center">
@@ -15,6 +22,7 @@ function FarmListPage() {
 					py="10px"
 					borderRadius="8px"
 					_hover={{ bg: "#00371D" }}
+					onClick={handleClick}
 				>
 					Add Farmer
 				</Button>
