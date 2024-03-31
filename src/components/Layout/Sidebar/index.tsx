@@ -1,10 +1,17 @@
 import { Center, Flex, Text } from "@chakra-ui/react";
 import { SidebarWrapper } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate("/");
+	};
+
 	return (
 		<SidebarWrapper>
-			<Center>
+			<Center onClick={handleClick} cursor="pointer">
 				<img
 					src="/images/DayaTaniLogo.svg"
 					alt="logo"
