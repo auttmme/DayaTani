@@ -38,7 +38,7 @@ function useFailedToast() {
 		}
 
 		return toast({
-			position: "top",
+			position: "top-right",
 			render: () => (
 				<Card
 					color="#B42318"
