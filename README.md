@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# DayaTani
+To run this application, please follow the instructions below:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Prerequisites
+Ensure that you have Node.js version 16 or higher installed on your system.
 
-Currently, two official plugins are available:
+## Clone Repository
+Begin by cloning this repository to your local machine. You can do this by executing the following command in your terminal:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+git clone <repository-url>
+```
+## Setting Up Environment Variables
+Before starting the project, it's necessary to set up environment variables. Follow these steps:
 
-## Expanding the ESLint configuration
+1. Convert your `username:password` to `Base64` using [Base64 Converter](https://base64.guru/converter)
+2. Copy the `base64` string.
+3. Create a `.env` file in the root directory of the project.
+4. Inside the `.env` file, assign the Base64 string to the `VITE_AUTH` variable in the following format:
+```
+ VITE_AUTH= Basic [your Base64 auth]
+```
+Here, username is dayatani, and password is your desired password, which will also be used to start the Agricola server later.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Installing Dependencies
+Next, install the project dependencies by running the following command in your terminal:
+```
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Starting the Agrigola HTTP Server
+Before launching **DayaTani** project, ensure that you have the [Agricola](https://github.com/DayaTani/agricola) HTTP Server running, as the **DayaTani** project retrieves data from this server.
+
+## Launching the DayaTani Project
+Finally, start the **DayaTani** project by executing the following command:
+```
+npm run dev
+```
+This will initiate the development serrver for the **DayaTani** application.
