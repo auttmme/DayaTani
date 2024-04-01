@@ -1,6 +1,8 @@
-import { Flex, Text, Button } from "@chakra-ui/react";
+import { Flex, Text, Button, Box } from "@chakra-ui/react";
 import FarmerList from "../components/FarmerList";
 import { useNavigate } from "react-router-dom";
+import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function FarmListPage() {
 	const navigate = useNavigate();
@@ -23,9 +25,19 @@ function FarmListPage() {
 					borderRadius="8px"
 					_hover={{ bg: "#00371D" }}
 					onClick={handleClick}
+					display={["none", "none", "block", "block"]}
 				>
 					Add Farmer
 				</Button>
+				<Box display={["block", "block", "none", "none"]}>
+					<FontAwesomeIcon
+						icon={faUserPlus}
+						onClick={handleClick}
+						color="#00371D"
+						width="24px"
+						height="24px"
+					/>
+				</Box>
 			</Flex>
 			<FarmerList />
 		</Flex>

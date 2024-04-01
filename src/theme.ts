@@ -15,6 +15,15 @@ const config = {
 		heading: `'Urbanist', sans-serif`,
 		body: `'Urbanist', sans-serif`,
 	},
+	components: {
+		Drawer: {
+			sizes: {
+				menu: {
+					dialog: { maxWidth: "200px" },
+				},
+			},
+		},
+	},
 };
 
 const customTheme = extendTheme(config);

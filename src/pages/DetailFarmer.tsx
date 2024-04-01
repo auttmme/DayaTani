@@ -7,23 +7,37 @@ import {
 	Input,
 	Text,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getDetailFarmer } from "../services/getDetailFarmer";
 import { useQuery } from "@tanstack/react-query";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 function DetailFarmerPage() {
 	const { id } = useParams();
+	const navigate = useNavigate();
 
 	const { data: detailFarmer } = useQuery({
 		queryKey: ["GetDetailFarmer"],
 		queryFn: () => getDetailFarmer(Number(id)),
 	});
 
+	const handleClickBack = () => {
+		navigate("/");
+	};
+
 	return (
 		<Flex direction="column" gap={3}>
-			<Text fontSize="xl" fontWeight="600">
-				Detail Farmer
-			</Text>
+			<Flex alignItems="center" gap={["12px", "12px", 0, 0]}>
+				<ArrowBackIcon
+					display={["flex", "flex", "none", "none"]}
+					width="24px"
+					height="24px"
+					onClick={handleClickBack}
+				/>
+				<Text fontSize="xl" fontWeight="600">
+					Detail Farmer
+				</Text>
+			</Flex>
 			<Card
 				borderRadius="24px"
 				width={{ base: "100%", md: "100%", lg: "100%", xl: "50%" }}
