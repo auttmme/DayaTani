@@ -1,17 +1,21 @@
 import { Center, Flex, Text } from "@chakra-ui/react";
 import { SidebarWrapper } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { SidebarMenuProps } from "../../../types/SidebarMenu";
 
 function Sidebar() {
 	const navigate = useNavigate();
+	const [selectedMenu, setSelectedMenu] = useState("farmers");
 
-	const handleClick = () => {
+	const handleClick = (menu: string) => {
+		setSelectedMenu(menu);
 		navigate("/");
 	};
 
 	return (
 		<SidebarWrapper>
-			<Center onClick={handleClick} cursor="pointer">
+			<Center onClick={() => handleClick("farmers")} cursor="pointer">
 				<img
 					src="/images/DayaTaniLogo.svg"
 					alt="logo"
@@ -20,43 +24,68 @@ function Sidebar() {
 				/>
 			</Center>
 			<Flex flexDirection="column" marginTop={6} marginLeft="3px" gap={6}>
-				<Flex flexDirection="row" gap="8px">
-					<img src="/images/UserIcon.svg" alt="famers" width={16} height={16} />
-					<Text color="#4D4F47">Farmers</Text>
-				</Flex>
-				<Flex flexDirection="row" gap="8px">
-					<img
-						src="/images/VirusIcon.svg"
-						alt="crop detection"
-						width={16}
-						height={16}
-					/>
-					<Text color="#4D4F47">Crop Detection</Text>
-				</Flex>
-				<Flex flexDirection="row" gap="8px">
-					<img
-						src="/images/LeavesIcon.svg"
-						alt="crop images"
-						width={16}
-						height={16}
-					/>
-					<Text color="#4D4F47">Crop Images</Text>
-				</Flex>
-				<Flex flexDirection="row" gap="8px">
-					<img src="/images/BotIcon.svg" alt="chatbot" width={16} height={16} />
-					<Text color="#4D4F47">ChatBot</Text>
-				</Flex>
-				<Flex flexDirection="row" gap="8px">
-					<img
-						src="/images/AssetsIcon.svg"
-						alt="assets"
-						width={16}
-						height={16}
-					/>
-					<Text color="#4D4F47">Assets</Text>
-				</Flex>
+				<MenuItem
+					icon="/images/UserIcon.svg"
+					text="Farmers"
+					menu="farmers"
+					selectedMenu={selectedMenu}
+					onClick={() => handleClick("farmers")}
+				/>
+				<MenuItem
+					icon="/images/VirusIcon.svg"
+					text="Crop Detection"
+					menu="cropDetection"
+					selectedMenu={selectedMenu}
+					onClick={() => handleClick("cropDetection")}
+				/>
+				<MenuItem
+					icon="/images/LeavesIcon.svg"
+					text="Crop Images"
+					menu="cropImages"
+					selectedMenu={selectedMenu}
+					onClick={() => handleClick("cropImages")}
+				/>
+				<MenuItem
+					icon="/images/BotIcon.svg"
+					text="ChatBot"
+					menu="chatBot"
+					selectedMenu={selectedMenu}
+					onClick={() => handleClick("chatBot")}
+				/>
+				<MenuItem
+					icon="/images/AssetsIcon.svg"
+					text="Assets"
+					menu="assets"
+					selectedMenu={selectedMenu}
+					onClick={() => handleClick("assets")}
+				/>
 			</Flex>
 		</SidebarWrapper>
+	);
+}
+
+function MenuItem({
+	icon,
+	text,
+	menu,
+	selectedMenu,
+	onClick,
+}: SidebarMenuProps) {
+	const isSelected = selectedMenu === menu;
+
+	return (
+		<Flex
+			flexDirection="row"
+			gap="8px"
+			borderLeft={isSelected ? "3px solid #00713B" : ""}
+			onClick={onClick}
+			cursor="pointer"
+			px={2}
+			py={1}
+		>
+			<img src={icon} alt={text} width={16} height={16} />
+			<Text color="#4D4F47">{text}</Text>
+		</Flex>
 	);
 }
 
